@@ -1,0 +1,14 @@
+Unpivoting Data:
+
+# Use Pandas melt function:
+# syntax = pd.melt([df], id_vars = [values to remain], value_vars = [columns to unpivot -- all remaining when empty, var_name = [new column name], value_name = [value column name])
+
+Unpivot Example: Unpivot all columns but Month and Day and rename column to measurement with reading for values
+airquality_melt = pd.melt(airquality, id_vars=['Month', 'Day'], var_name='measurement', value_name='reading')
+
+Pivoting Data:
+
+#Use Pandas pivot_table function:
+Example of pivoting above example
+# Pivot airquality_melt: airquality_pivot
+airquality_pivot = pd.pivot_table(airquality_melt, index=['Month', 'Day'], columns='measurement', values='reading')
